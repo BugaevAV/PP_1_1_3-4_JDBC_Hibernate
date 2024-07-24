@@ -15,30 +15,17 @@ public class UserServiceImpl implements UserService {
         userDao = new UserDaoJDBCImpl();
     }
 
-    public void createUsersTable() {
-        try {
-            userDao.createUsersTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void createUsersTable() throws SQLException {
+        userDao.createUsersTable();
     }
 
-    public void dropUsersTable() {
-        try {
-            userDao.dropUsersTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void dropUsersTable() throws SQLException {
+        userDao.dropUsersTable();
     }
 
-    public void saveUser(String name, String lastName, byte age) {
-        try {
-            userDao.saveUser(name, lastName, age);
-            System.out.printf("User с именем — %s добавлен в базу данных\n", name);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+    public void saveUser(String name, String lastName, byte age) throws SQLException {
+        userDao.saveUser(name, lastName, age);
+        System.out.printf("User с именем — %s добавлен в базу данных\n", name);
     }
 
     public void removeUserById(long id) {
