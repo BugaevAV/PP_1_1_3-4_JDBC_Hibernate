@@ -16,32 +16,21 @@ public class UserViaHibernateServiceImpl implements UserService {
     }
 
     @Override
-    public void createUsersTable() {
-        try {
-            userDao.createUsersTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void dropUsersTable() {
-        try {
-            userDao.dropUsersTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void createUsersTable() throws SQLException {
+        userDao.createUsersTable();
 
     }
 
     @Override
-    public void saveUser(String name, String lastName, byte age) {
-        try {
-            userDao.saveUser(name, lastName, age);
-            System.out.printf("User с именем — %s добавлен в базу данных\n", name);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void dropUsersTable() throws SQLException {
+        userDao.dropUsersTable();
+    }
+
+    @Override
+    public void saveUser(String name, String lastName, byte age) throws SQLException {
+        userDao.saveUser(name, lastName, age);
+        System.out.printf("User с именем — %s добавлен в базу данных\n", name);
+
     }
 
     @Override
