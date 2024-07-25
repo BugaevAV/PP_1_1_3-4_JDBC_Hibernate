@@ -29,6 +29,9 @@ public class UserDaoHibernateImpl implements UserDao {
                     "PRIMARY KEY (id));").executeUpdate();
             tx.commit();
         } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
@@ -41,6 +44,9 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createNativeQuery("DROP TABLE IF EXISTS users;").executeUpdate();
             tx.commit();
         } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
             e.printStackTrace();
         }
     }
@@ -79,6 +85,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (tx != null) {
                 tx.rollback();
             }
+            e.printStackTrace();
         }
 
     }
@@ -95,6 +102,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (tx != null) {
                 tx.rollback();
             }
+            e.printStackTrace();
         }
         return users;
     }
@@ -110,6 +118,7 @@ public class UserDaoHibernateImpl implements UserDao {
             if (tx != null) {
                 tx.rollback();
             }
+            e.printStackTrace();
         }
     }
 }
